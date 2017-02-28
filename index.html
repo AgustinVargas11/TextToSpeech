@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body ng-app="app">
+<div ng-controller="MainController as main" ng-cloak>
+
+    <form name="nameForm" ng-hide="main.person.name" z-depth="3">
+        <div class="form-group"
+             ng-class="{'has-error': nameForm.$invalid, 'has-success': nameForm.$valid && nameForm.$dirty}">
+            <span class="lead">Enter your name</span>
+            <input class="form-control" type="text" name="nameInput" ng-model="main.proxy"
+                   ng-on-enter="main.setName(main.proxy, nameForm)" autofocus>
+            <button class="btn btn-primary pull-right" ng-click="main.setName(main.proxy, nameForm)">done</button>
+        </div>
+    </form>
+
+    <div ng-if="main.person.name" ng-cloak>
+        <div ng-init="main.options.text = main.greeting + ' ' + main.person.name; main.speak()"
+             class="jumbotron p-a-1 text-center" z-depth="1">
+            <h2>{{ ::main.greeting }} {{ ::main.person.name }}!</h2>q
+        </div>
+        <div class="card" z-depth="3">
+            <div class="card-image-top"></div>
+            <div class="card-block">
+                <div class="p-a-1">
+                    <p class="lead">Text</p>
+                    <input type="text" class="form-control" name="text" ng-model="main.options.text"
+                           ng-on-enter="main.speak()" maxlength="100">
+                </div>
+
+                <div class="p-a-1">
+                    <p class="lead">speed: {{main.options.rate}}</p>
+                    <input type="range" name="speed" ng-model="main.options.rate" min="0" max="3" step=".25">
+                </div>
+
+                <div class="p-a-1">
+                    <p class="lead">pitch: {{main.options.pitch}}</p>
+                    <input type="range" name="pitch" ng-model="main.options.pitch" min="0" max="7" step=".25">
+                </div>
+
+                <div class="p-a-1">
+                    <p class="lead">volume: {{main.options.volume}}</p>
+                    <input type="range" name="volume" ng-model="main.options.volume" min="0" max="10" step=".5">
+                </div>
+
+                <div class="p-a-1">
+                    <p class="lead">voices</p>
+                    <select name="voices" ng-model="main.voiceIndex"
+                            ng-change="main.setVoice(main.voices[main.voiceIndex])">
+                        <option value="">Choose a Voice</option>
+                        <option ng-repeat="voice in main.voices track by $index" value="{{$index}}">
+                            {{voice.name}} {{voice.lang}}
+                        </option>
+                    </select>
+                </div>
+
+                <div class="p-a-1">
+                    <button class="btn btn-primary" z-depth="1" ng-click="main.speak()"
+                            ng-disabled="main.buttonState">speak
+                    </button>
+                    <button class="btn btn-primary" z-depth="1" ng-click="main.resetOptions()">reset</button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+<script src="node_modules/angular/angular.js"></script>
+<script src="node_modules/angular-animate/angular-animate.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/controllers/mainController.js"></script>
+<script src="js/directives/onEnter.js"></script>
+<script src="js/directives/zDepth.js"></script>
+<script src="js/services/speakService.js"></script>
+</body>
+</html>
