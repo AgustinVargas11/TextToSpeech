@@ -26,11 +26,11 @@
         function init(greeting, callback) {
             vm.person = {};
             vm.options = {};
-            vm.greeting = greeting;
+            vm.greeting = greeting || 'Hello';
             vm.speak = speak;
             vm.setName = setName;
             vm.setVoice = setVoice;
-            vm.setOptions = setOptions;
+            vm.setOptions = SpeakService.setOptions;
             vm.resetOptions = resetOptions;
 
             SpeakService.getVoices()
@@ -52,12 +52,8 @@
         }
 
         function speak() {
-            setOptions(vm.options);
+            SpeakService.setOptions(vm.options);
             SpeakService.speak();
-        }
-
-        function setOptions(options) {
-            SpeakService.setOptions(options);
         }
 
         function setVoice(voice) {

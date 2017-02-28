@@ -4,7 +4,6 @@ const app = express();
 
 const PORT = process.env.PORT || 8000;
 
-const oneDay = 86400000;
 app.use(express.static(path.join(__dirname, '..', '/public')));
 
 app.listen(PORT, () => {
