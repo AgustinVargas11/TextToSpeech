@@ -1,4 +1,4 @@
-# Text To Speech APP
+# Text To Speech app
 
 Have some fun with this app.
 
