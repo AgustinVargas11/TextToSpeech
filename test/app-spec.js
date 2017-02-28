@@ -2,7 +2,7 @@ beforeEach(function () {
     browser.get('http://localhost:8000');
 });
 
-describe('test app', function () {
+describe('text to speech app', function () {
 
     const nameInput = element(by.model('main.proxy'));
     const greeting = element(by.binding('main.greeting'));
@@ -15,7 +15,7 @@ describe('test app', function () {
     const volumeSlider = element(by.model('main.options.volume'));
 
     it('should have a title', function () {
-        expect(browser.getTitle()).toEqual('Test');
+        expect(browser.getTitle()).toEqual('Text to Speech');
     });
 
     describe('modal box', function () {
