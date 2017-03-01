@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "angular": "^1.6.2",
-    "angular-animate": "^1.6.2"
+    "angular-animate": "^1.6.2",
+    "bootstrap": "^3.3.7"
   },
   "devDependencies": {},
   "scripts": {

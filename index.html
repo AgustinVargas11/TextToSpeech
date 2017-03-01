@@ -12,7 +12,11 @@
 <body ng-app="app">
 <div ng-controller="MainController as main" ng-cloak>
 
-    <form name="nameForm" ng-hide="main.person.name" z-depth="3">
+    <div class="loading fade-big" ng-hide="main.loading === false">
+        <img src="assets/loading.gif" alt="loading">
+    </div>
+
+    <form name="nameForm" class="fade-big" ng-hide="main.person.name" z-depth="3">
         <div class="form-group"
              ng-class="{'has-error': nameForm.$invalid, 'has-success': nameForm.$valid && nameForm.$dirty}">
             <span class="lead">Enter your name</span>
@@ -22,10 +26,10 @@
         </div>
     </form>
 
-    <div ng-if="main.person.name" ng-cloak>
-        <div ng-init="main.options.text = main.greeting + ' ' + main.person.name; main.speak()"
+    <div ng-if="main.person.name" class="fade-in" ng-cloak>
+        <div ng-init="main.options.text = main.greeting + ' ' + main.person.name; main.speak(500)"
              class="jumbotron p-a-1 text-center" z-depth="1">
-            <h2>{{ ::main.greeting }} {{ ::main.person.name }}!</h2>q
+            <h2>{{ ::main.greeting }} {{ ::main.person.name }}!</h2>
         </div>
         <div class="card" z-depth="3">
             <div class="card-image-top"></div>
