@@ -2,5 +2,5 @@
     'use strict';
 
     angular
-        .module('app', ['ngAnimate', 'zDepth']);
+        .module('app', ['ngAnimate']);
 })();

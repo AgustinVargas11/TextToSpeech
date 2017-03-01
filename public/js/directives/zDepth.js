@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('zDepth', [])
+        .module('app')
         .directive('zDepth', zDepth);
 
     zDepth.$inject = ['$compile', '$log'];

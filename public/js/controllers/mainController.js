@@ -5,14 +5,18 @@
         .module('app')
         .controller('MainController', mainController);
 
-    mainController.$inject = ['$scope', '$log', 'SpeakService'];
+    mainController.$inject = ['$scope', '$log', '$timeout', 'SpeakService'];
 
-    function mainController($scope, $log, SpeakService) {
+    function mainController($scope, $log, $timeout, SpeakService) {
 
         const vm = this;
 
         init('Welcome', function () {
             $log.info('Ready...');
+            // spinner exit was too abrupt
+            $timeout(function () {
+                vm.loading = false;
+            }, 300);
         });
 
         $scope.$on('speech start', function () {
@@ -51,9 +55,10 @@
             vm.person.name = name;
         }
 
-        function speak() {
+        function speak(delay) {
+            console.log(delay);
             SpeakService.setOptions(vm.options);
-            SpeakService.speak();
+            $timeout(SpeakService.speak, delay);
         }
 
         function setVoice(voice) {
