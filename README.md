@@ -2,7 +2,7 @@
 
 Have some fun with this app.
 
-[Try it out]: (https://agustinvargas11.github.io/TextToSpeech/)
+[Try it out]: <http://www.example.com>
 
 ```
 npm start to start server before testing with selenium
