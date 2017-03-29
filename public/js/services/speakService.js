@@ -8,6 +8,11 @@
     speakService.$inject = ['$q', '$rootScope'];
 
     function speakService($q, $rootScope) {
+        if (!window.SpeechSynthesisUtterance) {
+          return {
+            error: 'incompatible browser'
+          };
+        }
         const synth = window.speechSynthesis;
         let speechInstance = new SpeechSynthesisUtterance();
 

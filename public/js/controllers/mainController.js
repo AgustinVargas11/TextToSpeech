@@ -34,8 +34,16 @@
             vm.speak = speak;
             vm.setName = setName;
             vm.setVoice = setVoice;
-            vm.setOptions = SpeakService.setOptions;
             vm.resetOptions = resetOptions;
+
+          console.log('bar');
+          if (SpeakService.error) {
+            vm.loading = false;
+            vm.error = 'Please use a better browser that supports current APIs.';
+            return;
+          }
+
+          vm.setOptions = SpeakService.setOptions;
 
             SpeakService.getVoices()
                 .then(function (voices) {
@@ -65,7 +73,9 @@
             vm.options.voice = voice;
         }
 
-        function resetOptions() {
+      console.log('foo');
+
+      function resetOptions() {
             vm.options = {
                 volume: 1,
                 text: '',
