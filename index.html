@@ -16,6 +16,10 @@
         <img src="assets/loading.gif" alt="loading">
     </div>
 
+    <div ng-if="main.error" class="error">
+        <h1>{{main.error}}</h1>
+    </div>
+
     <form name="nameForm" class="fade-big" ng-hide="main.person.name" z-depth="3">
         <div class="form-group"
              ng-class="{'has-error': nameForm.$invalid, 'has-success': nameForm.$valid && nameForm.$dirty}">

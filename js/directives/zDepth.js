@@ -17,7 +17,8 @@
             const zVal = attrs.zDepth;
 
             if (zVal > 5) {
-                return $log.warn(`z-depth only accepts values from 1 to 5 - received value of ${zVal} on element [${element[0].localName}].`);
+                 $log.warn('z-depth only accepts values from 1 to 5 - received value of ' + zVal + 'on element [' + element[0].localName + '].');
+              return;
             }
 
             angular.element(element).addClass('z-depth-' + zVal);
