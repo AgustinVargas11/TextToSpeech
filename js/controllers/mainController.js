@@ -35,10 +35,10 @@
       vm.setName = setName;
       vm.setVoice = setVoice;
       vm.resetOptions = resetOptions;
-      
+
       if (SpeakService.error) {
         vm.loading = false;
-        vm.error = 'Please use a better browser that supports current APIs.';
+        vm.error = 'Internet Explorer does not support the speech API. Please use a different browser.';
         return;
       }
 
